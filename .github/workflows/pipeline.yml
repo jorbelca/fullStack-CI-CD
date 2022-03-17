@@ -44,7 +44,66 @@ jobs:
        - name: build FRONT
          working-directory: ./FRONT
          run: npm run build 
-       - uses: actions/upload-artifact@v2
+       - uses: actions/upload-artifact@v2         
          with: 
-           name: dist
-           path: dist
+           name: build
+           path: build
+#    tests:
+#      runs-on: ubuntu-20.04
+#      needs: [build,lint]
+#      steps:
+#       - uses: actions/checkout@v3
+#         with: 
+#           fetch-depth: 0
+#       - uses: actions/setup-node@v2
+#         with:
+#           cache: 'npm'
+#           node-version: '16'
+#       - name: npm install 
+#         run: npm ci
+#       - uses: actions/download-artifact@v2
+#         working-directory: ./FRONT
+#         with: 
+#           name: build
+#           path: build
+#       - uses: cypress-io/github-action@v2
+#         with:  
+#          browser: chrome
+#          headless: true
+#          command: npx cypress run
+#          start: npm run start-prod
+#          wait-on: http://localhost:5000
+              
+ deploy:
+      runs-on: ubuntu-20.04
+      needs: [ lint,build]         
+      steps:
+        - uses: actions/checkout@v3
+          with: 
+           fetch-depth: 0
+         
+        - uses: akhileshns/heroku-deploy@v3.12.12 
+          with:
+            heroku_api_key: ${{secrets.HEROKU_TOKEN}}
+            heroku_app_name: "persons00"
+            heroku_email: ${{secrets.HEROKU_EMAIL}}
+            healthcheck: "https://persons00.herokuapp.com/health"
+            checkstring: "ok" 
+            delay: 1
+            rollbackonhealthcheckfailed: true
+          
+#   versioning:
+#      runs-on: ubuntu-20.04  
+#      needs: deploy
+#      if:  ${{ (! contains(github.event.head_commit.message, '#skips'))}} || ${{(github.event_name == 'push')  }} 
+#      steps:
+#      - uses: actions/checkout@v2
+#        with:
+#         fetch-depth: '0'
+#      - uses: anothrNick/github-tag-action@1.36.0
+#        env:
+#            GITHUB_TOKEN: ${{ github.token }}
+#            WITH_V: true
+#            DEFAULT_BUMP: patch
+#            DRY_RUN: true
+           
