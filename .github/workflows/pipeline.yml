@@ -70,8 +70,8 @@ jobs:
          browser: chrome
          headless: true
          command: npx cypress run
-         start: npm run start-prod
-         wait-on: http://localhost:5000
+         start: npm run start
+         wait-on: http://localhost:3001
               
  deploy:
       runs-on: ubuntu-20.04
