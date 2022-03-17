@@ -67,7 +67,6 @@ jobs:
            path: ./FRONT/build
       - uses: cypress-io/github-action@v2
         env: 
-
           MONGO.URI: ${{secrets.MONGO.URI}}
         with:  
          browser: chrome
