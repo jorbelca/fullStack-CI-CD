@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+      "startTest": "mode=test node index.js",
     "dev": "nodemon index.js",
     "test:e2e": "npx cypress run",
     "test": "jest",
