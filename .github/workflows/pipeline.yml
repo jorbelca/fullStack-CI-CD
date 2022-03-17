@@ -70,14 +70,16 @@ jobs:
       - uses: cypress-io/github-action@v2
         env: 
           MONGO_URI: ${{secrets.MONGO_URI}}
-          run : echo MONGO_URI
+          run : echo $MONGO_URI
         with:  
          browser: chrome
          headless: true
          command: npx cypress run
          start: npm run start
          wait-on: http://localhost:3001
-              
+      
+      
+
  deploy:
       runs-on: ubuntu-20.04
       needs: [ lint,build,tests]         
