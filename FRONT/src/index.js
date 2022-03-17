@@ -29,7 +29,7 @@ const Persons = ({
   const deletePers = (id, name) => {
     if (window.confirm(`Are you sure to delete the information of ${name}?`)) {
       deletePerson(id)
-        .then((response) => {
+        .then(() => {
           setSuccessMessage("The entry has been deleted")
           setTimeout(() => setSuccessMessage(""), 5000)
           getAllPersons().then((response) => {
@@ -74,7 +74,7 @@ const Persons = ({
   )
 }
 
-const Filter = ({ search, persons, newSearch, setPersons }) => {
+const Filter = ({  newSearch }) => {
   return (
     <div>
       Filter shown with<span>&nbsp;</span>
