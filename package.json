@@ -1,7 +1,7 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "fullstack open course",
+  "description": "fullstack open course of the university of helsinki",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
