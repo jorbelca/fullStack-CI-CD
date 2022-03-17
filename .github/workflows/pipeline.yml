@@ -3,7 +3,7 @@ name: Deployment pipeline
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
  avoid_reduncy:
     runs-on: ubuntu-20.04
