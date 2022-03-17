@@ -67,8 +67,8 @@ jobs:
            path: ./FRONT/build
       - uses: cypress-io/github-action@v2
         env: 
-          PORT: ${{secrets.PORT}}
-          MONGO.URi: ${{secrets.MONGO.URI}}
+
+          MONGO.URI: ${{secrets.MONGO.URI}}
         with:  
          browser: chrome
          headless: true
