@@ -66,11 +66,14 @@ jobs:
            name: build
            path: ./FRONT/build
       - uses: cypress-io/github-action@v2
+        env: 
+          PORT: ${{secrets.PORT}}
+          MONGO.URi: ${{secrets.MONGO.URI}}
         with:  
          browser: chrome
          headless: true
          command: npx cypress run
-         start: npm run startTest
+         start: npm run start
          wait-on: http://localhost:3001
               
  deploy:
