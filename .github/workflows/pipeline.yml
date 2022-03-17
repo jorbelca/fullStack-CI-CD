@@ -39,10 +39,10 @@ jobs:
            cache: 'npm'
            node-version: '16'
        - name: npm install FRONT
-         working-directory: ./FRONT
+         working-directory: ../FRONT
          run: npm ci
        - name: build FRONT
-         working-directory: ./FRONT
+         working-directory: ../FRONT
          run: npm run build 
        - uses: actions/upload-artifact@v2
          with: 
