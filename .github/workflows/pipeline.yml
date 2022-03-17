@@ -16,7 +16,7 @@ jobs:
  lint:
     runs-on: ubuntu-20.04
     env: 
-     MONGO.URI: ${{secrets.MONGO.URI}}
+     MONGOURI: ${{secrets.MONGO.URI}}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
@@ -69,7 +69,7 @@ jobs:
            path: ./FRONT/build
       - uses: cypress-io/github-action@v2
         env: 
-          MONGO.URI: ${{secrets.MONGO.URI}}
+          MONGOURI: ${{secrets.MONGO.URI}}
         with:  
          browser: chrome
          headless: true
