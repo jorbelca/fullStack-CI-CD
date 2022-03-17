@@ -1,7 +1,7 @@
 require("dotenv").config()
 
-const URL = process.env.MONGO_URI
-const PORT = process.env.PORT
+const URL = ${{secrets.MONGO_URI}}
+const PORT = ${{secrets.env.PORT}}
 
 module.exports = {
   URL,
