@@ -70,6 +70,7 @@ jobs:
       - uses: cypress-io/github-action@v2
         env: 
           MONGO_URI: ${{secrets.MONGO_URI}}
+          run : echo MONGO_URI
         with:  
          browser: chrome
          headless: true
