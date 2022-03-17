@@ -48,35 +48,34 @@ jobs:
          with: 
            name: build
            path: ./FRONT/build
-#    tests:
-#      runs-on: ubuntu-20.04
-#      needs: [build,lint]
-#      steps:
-#       - uses: actions/checkout@v3
-#         with: 
-#           fetch-depth: 0
-#       - uses: actions/setup-node@v2
-#         with:
-#           cache: 'npm'
-#           node-version: '16'
-#       - name: npm install 
-#         run: npm ci
-#       - uses: actions/download-artifact@v2
-#         working-directory: ./FRONT
-#         with: 
-#           name: build
-#           path: build
-#       - uses: cypress-io/github-action@v2
-#         with:  
-#          browser: chrome
-#          headless: true
-#          command: npx cypress run
-#          start: npm run start-prod
-#          wait-on: http://localhost:5000
+ tests:
+     runs-on: ubuntu-20.04
+     needs: [build,lint]
+     steps:
+      - uses: actions/checkout@v3
+        with: 
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          cache: 'npm'
+          node-version: '16'
+      - name: npm install 
+        run: npm ci
+      - uses: actions/download-artifact@v2         
+        with: 
+           name: build
+           path: ./FRONT/build
+      - uses: cypress-io/github-action@v2
+        with:  
+         browser: chrome
+         headless: true
+         command: npx cypress run
+         start: npm run start-prod
+         wait-on: http://localhost:5000
               
  deploy:
       runs-on: ubuntu-20.04
-      needs: [ lint,build]         
+      needs: [ lint,build,tests]         
       steps:
         - uses: actions/checkout@v3
           with: 
@@ -98,7 +97,6 @@ jobs:
  versioning:
      runs-on: ubuntu-20.04  
      needs: deploy
-     if:  ${{ (! contains(github.event.head_commit.message, '#skips'))}} || ${{(github.event_name == 'push')  }} 
      steps:
      - uses: actions/checkout@v2
        with:
@@ -108,5 +106,5 @@ jobs:
            GITHUB_TOKEN: ${{ github.token }}
            WITH_V: true
            DEFAULT_BUMP: patch
-           DRY_RUN: true
+
            
