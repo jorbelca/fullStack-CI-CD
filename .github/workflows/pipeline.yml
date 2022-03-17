@@ -13,12 +13,12 @@ jobs:
         with:
           node-version: '16'
       - name: npm install 
-        run: npm install  
+        run: npm ci
       - name: lint fix
         run: npm run lint:fix
       - name: lint
         run: npm run eslint
-      - name: build
-        run: npm run build
-      - name: test
-        run: npm run test
+#       - name: build
+#         run: npm run build
+#       - name: test
+#         run: npm run test
