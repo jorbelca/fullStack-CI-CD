@@ -8,7 +8,7 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:react/recommended",
+
     "plugin:cypress/recommended",
   ],
   parserOptions: {
@@ -17,7 +17,7 @@ module.exports = {
     },
     ecmaVersion: "latest",
   },
-  plugins: ["react", "jest"],
+  plugins: [, "jest"],
   rules: {
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
