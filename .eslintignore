@@ -4,3 +4,4 @@ FRONT/build
 FRONT/node_modules
 FRONT/src/index.js
 FRONT/src/services/numbersApi.js
+cypress
