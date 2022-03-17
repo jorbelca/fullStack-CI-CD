@@ -7,7 +7,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
+    "eslint:recommended"
 
     "plugin:cypress/recommended",
   ],
@@ -17,7 +17,7 @@ module.exports = {
     },
     ecmaVersion: "latest",
   },
-  plugins: [, "jest"],
+  plugins: [ "jest"],
   rules: {
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
