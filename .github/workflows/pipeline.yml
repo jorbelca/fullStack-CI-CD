@@ -95,18 +95,18 @@ jobs:
             delay: 1
             rollbackonhealthcheckfailed: true
           
-#   versioning:
-#      runs-on: ubuntu-20.04  
-#      needs: deploy
-#      if:  ${{ (! contains(github.event.head_commit.message, '#skips'))}} || ${{(github.event_name == 'push')  }} 
-#      steps:
-#      - uses: actions/checkout@v2
-#        with:
-#         fetch-depth: '0'
-#      - uses: anothrNick/github-tag-action@1.36.0
-#        env:
-#            GITHUB_TOKEN: ${{ github.token }}
-#            WITH_V: true
-#            DEFAULT_BUMP: patch
-#            DRY_RUN: true
+ versioning:
+     runs-on: ubuntu-20.04  
+     needs: deploy
+     if:  ${{ (! contains(github.event.head_commit.message, '#skips'))}} || ${{(github.event_name == 'push')  }} 
+     steps:
+     - uses: actions/checkout@v2
+       with:
+        fetch-depth: '0'
+     - uses: anothrNick/github-tag-action@1.36.0
+       env:
+           GITHUB_TOKEN: ${{ github.token }}
+           WITH_V: true
+           DEFAULT_BUMP: patch
+           DRY_RUN: true
            
