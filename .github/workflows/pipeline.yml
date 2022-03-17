@@ -70,7 +70,7 @@ jobs:
          browser: chrome
          headless: true
          command: npx cypress run
-         start: npm run start
+         start: npm run startTest
          wait-on: http://localhost:3001
               
  deploy:
