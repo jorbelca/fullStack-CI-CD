@@ -76,7 +76,7 @@ jobs:
          headless: true
          command: npx cypress run
          start: npm run start
-         wait-on: http://localhost:3001
+         wait-on: 'http://localhost:3001'
      
       - uses: actions/upload-artifact@v2
         if: failure()
