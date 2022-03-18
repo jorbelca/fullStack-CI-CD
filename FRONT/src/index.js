@@ -74,12 +74,13 @@ const Persons = ({
   )
 }
 
-const Filter = ({  newSearch }) => {
+const Filter = ({ newSearch }) => {
   return (
     <div>
       Filter shown with<span>&nbsp;</span>
       <span>
         <input
+          id="filterPerson"
           type="text"
           placeholder="name"
           onChange={(e) => {
@@ -103,10 +104,16 @@ const PersonForm = ({
       <div>
         Name:<span>&nbsp;</span>
         <span>&nbsp;</span>
-        <input type="text" value={newName} onChange={handlePerson} />
+        <input
+          id="namePerson"
+          type="text"
+          value={newName}
+          onChange={handlePerson}
+        />
         <div>
           Number:
           <input
+            id="numberPerson"
             type="number"
             value={newNumber}
             onChange={handlePersonNumber}
