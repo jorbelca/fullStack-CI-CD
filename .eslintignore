@@ -1,7 +1,4 @@
-webpack.config.js
+
 node_modules/
 FRONT/build
 FRONT/node_modules
-FRONT/src/index.js
-FRONT/src/services/numbersApi.js
-cypress
