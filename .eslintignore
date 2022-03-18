@@ -2,3 +2,4 @@
 node_modules/
 FRONT/build
 FRONT/node_modules
+FRONT/src/index.jsx
