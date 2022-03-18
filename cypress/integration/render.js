@@ -5,13 +5,14 @@ describe("Persons App", function () {
     cy.contains("Numbers")
   })
   it("Search", function () {
-    cy.get(".filterPerson").type("anna")
+    cy.get("#filterPerson").type("anna")
     cy.contains("Anna")
   })
   it("Add new", function () {
-    cy.get(".namePerson").type("Test")
-    cy.get(".numberPerson").type("0987654321")
+    cy.get("#namePerson").type("Test")
+    cy.get("#numberPerson").type("0987654321")
     cy.get("button").contains("Add").click()
+    cy.contains("Test")
   })
   it("Delete", function () {
     cy.visit("http://localhost:3001")
