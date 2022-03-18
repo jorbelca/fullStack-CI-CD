@@ -79,7 +79,7 @@ jobs:
          wait-on: http://localhost:3001
          
         if: failure()     
-      - uses: actions/upload-artifact@latest
+      - uses: actions/upload-artifact@v2
         with:
            name: cypress-snapshots
            path: cypress/snapshots
