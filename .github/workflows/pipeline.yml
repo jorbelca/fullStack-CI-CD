@@ -77,7 +77,12 @@ jobs:
          command: npx cypress run
          start: npm run start
          wait-on: http://localhost:3001
-      
+         
+        if: failure()     
+      - uses: actions/upload-artifact@latest
+        with:
+           name: cypress-snapshots
+           path: cypress/snapshots
       
 
  deploy:
