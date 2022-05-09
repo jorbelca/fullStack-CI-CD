@@ -23,8 +23,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: npm install --no-audit --no-fund --no-optional
-        run: npm ci
+      - name: npm install 
+        run: npm ci --no-audit --no-fund --no-optional
       - name: lint fix
         run: npm run lint:fix
       - name: lint
@@ -43,7 +43,7 @@ jobs:
            node-version: '16'
        - name: npm install FRONT
          working-directory: ./FRONT
-         run: npm ci
+         run: npm ci --no-audit --no-fund --no-optional
        - name: build FRONT
          working-directory: ./FRONT
          run: npm run build 
@@ -63,7 +63,7 @@ jobs:
           cache: 'npm'
           node-version: '16'
       - name: npm install 
-        run: npm ci
+        run: npm ci --no-audit --no-fund --no-optional
       - uses: actions/download-artifact@v2         
         with: 
            name: build
