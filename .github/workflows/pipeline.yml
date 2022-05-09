@@ -5,6 +5,8 @@ on:
     branches:
       - main
 jobs:
+env:
+COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
  avoid_reduncy:
     runs-on: ubuntu-20.04
     steps: 
