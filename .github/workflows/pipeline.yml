@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: npm install 
+      - name: npm install --no-audit --no-fund --no-optional
         run: npm ci
       - name: lint fix
         run: npm run lint:fix
