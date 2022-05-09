@@ -6,8 +6,6 @@ on:
       - main
 jobs:
  avoid_reduncy:
-    env:
-      COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
     runs-on: ubuntu-20.04
     steps: 
       - name: Cancel previous redundant builds
@@ -96,6 +94,8 @@ jobs:
       
 
  deploy:
+      env:
+       COMMIT_MESSAGES: ${{ join(github.event.commits.*.message) }}
       if: ${{ github.event_name == 'push' && !contains(env.COMMIT_MESSAGES, '#skip') }}
       runs-on: ubuntu-20.04
       needs: [ lint,build,tests]         
